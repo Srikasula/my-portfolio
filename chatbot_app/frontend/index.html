@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Chatbot</title>
+</head>
+<body>
+  <h2>AI Chatbot</h2>
+  <div id="chatBox"></div>
+  <form id="chatForm">
+    <input type="text" id="message" placeholder="Ask something..." required />
+    <button type="submit">Send</button>
+  </form>
+
+  <script>
+    document.getElementById('chatForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const input = document.getElementById('message');
+      const userMsg = input.value;
+      input.value = '';
+
+      const chatBox = document.getElementById('chatBox');
+      chatBox.innerHTML += `<p><strong>You:</strong> ${userMsg}</p>`;
+
+      const res = await fetch('http://localhost:5000/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMsg })
+      });
+
+      const data = await res.json();
+      chatBox.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
+    });
+  </script>
+</body>
+</html>
