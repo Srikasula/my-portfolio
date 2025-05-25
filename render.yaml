@@ -4,5 +4,4 @@ services:
     env: python
     plan: free
     buildCommand: pip install -r chatbot_app/requirements.txt
-    startCommand:"python chatbot_app/backend/app.py"
-    
+    startCommand: python chatbot_app/backend/app.py
