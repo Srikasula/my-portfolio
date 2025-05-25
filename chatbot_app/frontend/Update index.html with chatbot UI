@@ -22,7 +22,7 @@
       const chatBox = document.getElementById('chatBox');
       chatBox.innerHTML += `<p><strong>You:</strong> ${userMsg}</p>`;
 
-      const res = await fetch('http://localhost:5000/chat', {
+      const res = await fetch('https://chatbot-backend-jlcx.onrender.com/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMsg })
