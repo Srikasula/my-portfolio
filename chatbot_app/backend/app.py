@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import openai
 import os
@@ -10,10 +10,10 @@ CORS(app)
 # Load OpenAI API key from environment variable
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# Health check route
+# Serve frontend (index.html) on root route
 @app.route('/')
-def home():
-    return "Chatbot Backend is Running"
+def serve_frontend():
+    return send_from_directory('../frontend', 'index.html')
 
 # Chatbot API route
 @app.route('/chat', methods=['POST'])
