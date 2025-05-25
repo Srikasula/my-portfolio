@@ -6,8 +6,11 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-# Set your OpenAI API key here (or load from env variables securely)
-openai.api_key = "YOUR_OPENAI_API_KEY"
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+@app.route('/')
+def home():
+    return "Chatbot Backend is Running"
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -19,7 +22,7 @@ def chat():
 
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # or "gpt-4" if your key supports it
+            model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": user_input}]
         )
         reply = response['choices'][0]['message']['content']
@@ -27,10 +30,6 @@ def chat():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-if __name__ == '__main__':
-   import os
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
-
