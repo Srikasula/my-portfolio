@@ -1,18 +1,28 @@
+from flask import Flask, request, jsonify
+import openai
+import os
+
+app = Flask(__name__)
+
+# Set your OpenAI API key
+openai.api_key = os.getenv("OPENAI_API_KEY")  # Or hardcode for testing: openai.api_key = "sk-..."
+
+@app.route('/')
+def home():
+    return "Chatbot Backend is Running"
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    data = request.get_json()
-    user_input = data.get("message")
-
-    if not user_input:
-        return jsonify({"error": "No input provided"}), 400
-
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": user_input}]
+        data = request.get_json()
+        user_message = data.get("message", "")
+
+        # Call OpenAI API
+        response = openai.Completion.create(
+            engine="text-davinci-003",  # Or gpt-3.5-turbo if using chat API
+            prompt=user_message,
+            max_tokens=50
         )
-        reply = response['choices'][0]['message']['content']
-        return jsonify({ "reply": reply })  # ✅ Ensure this line
-    except Exception as e:
-        return jsonify({ "error": str(e) }), 500
+
+       
+
