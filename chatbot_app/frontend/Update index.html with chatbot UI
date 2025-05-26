@@ -1,36 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>AI Chatbot</title>
-</head>
-<body>
-  <h2>AI Chatbot</h2>
-  <div id="chatBox"></div>
-  <form id="chatForm">
-    <input type="text" id="message" placeholder="Ask something..." required />
-    <button type="submit">Send</button>
-  </form>
+<script>
+  const chatForm = document.getElementById('chatForm');
+  const chatBox = document.getElementById('chatBox');
 
-  <script>
-    document.getElementById('chatForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const input = document.getElementById('message');
-      const userMsg = input.value;
-      input.value = '';
+  chatForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-      const chatBox = document.getElementById('chatBox');
-      chatBox.innerHTML += `<p><strong>You:</strong> ${userMsg}</p>`;
+    const input = document.getElementById('message');
+    const userMsg = input.value;
+    input.value = '';
 
-      const res = await fetch('https://chatbot-backend-jlcx.onrender.com/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMsg })
-      });
+    chatBox.innerHTML += `<p><strong>You:</strong> ${userMsg}</p>`;
 
-      const data = await res.json();
-      chatBox.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
+    const res = await fetch("https://your-backend.onrender.com/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: userMsg })
     });
-  </script>
-</body>
-</html>
+
+    const data = await res.json();
+
+    if (data.reply) {
+      chatBox.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
+    } else {
+      chatBox.innerHTML += `<p><strong>Bot:</strong> Sorry, no reply received.</p>`;
+    }
+  });
+</script>
