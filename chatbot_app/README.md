@@ -37,7 +37,7 @@ cd backend
 pip install -r ../requirements.txt
 python app.py
 
-Project Screenshots
+**Project Screenshots**
 
 This includes:
 
@@ -50,7 +50,7 @@ Postman API test
 GitHub folder structure
 
 Render dashboard
-Features
+**Features**
 Real-time AI replies using OpenAI's GPT engine
 
 Simple user interface built in HTML & JS
@@ -63,7 +63,7 @@ Fully deployed backend on Render
 
 Screenshot-based proof of working chatbot
 
-What I Learned
+**What I Learned**
 REST API development using Flask
 
 Frontend to backend JSON communication
