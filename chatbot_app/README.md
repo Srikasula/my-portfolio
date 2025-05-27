@@ -6,7 +6,7 @@ This is a full stack AI chatbot project built using **Python Flask**, **HTML/Jav
 
 ## 📌 What I Built
 
-Over 3 days, I developed and deployed:
+ I developed and deployed:
 
 - A **Flask-based backend** that connects to OpenAI's GPT API
 - A **JavaScript + HTML frontend** to interact with users
