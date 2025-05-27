@@ -4,7 +4,6 @@ import os
 
 app = Flask(__name__)
 
-# Set your OpenAI API key (from environment variable or hardcoded for testing)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route('/')
@@ -15,12 +14,14 @@ def home():
 def chat():
     try:
         data = request.get_json()
-        user_message = data.get("message", "")
+        user_input = data.get("message", "")
 
-        # Call OpenAI API
+        if not user_input:
+            return jsonify({"error": "No input provided"}), 400
+
         response = openai.Completion.create(
-            engine="text-davinci-003",  # You can use gpt-3.5-turbo if chat model
-            prompt=user_message,
+            engine="text-davinci-003",  # or gpt-3.5-turbo via Chat API
+            prompt=user_input,
             max_tokens=50
         )
 
