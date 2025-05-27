@@ -1,17 +1,16 @@
 <script>
-  const chatForm = document.getElementById('chatForm');
+document.getElementById('chatForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const input = document.getElementById('message');
+  const userMsg = input.value;
+  input.value = '';
+
   const chatBox = document.getElementById('chatBox');
+  chatBox.innerHTML += `<p><strong>You:</strong> ${userMsg}</p>`;
 
-  chatForm.addEventListener('submit', async function (e) {
-    e.preventDefault();
-
-    const input = document.getElementById('message');
-    const userMsg = input.value;
-    input.value = '';
-
-    chatBox.innerHTML += `<p><strong>You:</strong> ${userMsg}</p>`;
-
-    const res = await fetch("https://your-backend.onrender.com/chat", {
+  try {
+    const res = await fetch("https://chatbot-backend-xxxx.onrender.com/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -20,11 +19,17 @@
     });
 
     const data = await res.json();
+    console.log("Response:", data); // ✅ Add this line
 
     if (data.reply) {
       chatBox.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
     } else {
-      chatBox.innerHTML += `<p><strong>Bot:</strong> Sorry, no reply received.</p>`;
+      chatBox.innerHTML += `<p><strong>Bot:</strong> Sorry, no reply.</p>`;
     }
-  });
+
+  } catch (err) {
+    console.error("Fetch error:", err);
+    chatBox.innerHTML += `<p><strong>Bot:</strong> Something went wrong.</p>`;
+  }
+});
 </script>
