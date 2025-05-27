@@ -23,3 +23,14 @@ Or securely load it from `.env` (optional later step).
 ```bash
 cd chatbot_app/backend
 python app.py
+# 💬 My Portfolio Projects
+
+## 🤖 AI-Powered Chatbot (Full Stack)
+
+Built with Python Flask, OpenAI GPT API, and HTML/JS.
+
+👉 View the project folder: [chatbot_app](./chatbot_app)
+
+👉 View screenshots: [Chatbot Screenshots (PDF)](./chatbot_app/screenshots/Srikanth_AI_Chatbot_Screenshots_FINAL.pdf)
+
+---
