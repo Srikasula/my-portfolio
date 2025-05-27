@@ -1,36 +1,76 @@
 # 🤖 AI-Powered Full Stack Chatbot
 
-This is a full stack chatbot application built with a Python Flask backend and a simple HTML/JavaScript frontend. It uses OpenAI's GPT API to generate intelligent responses based on user input.
+This is a full stack AI chatbot project built using **Python Flask**, **HTML/JavaScript**, and **OpenAI's GPT API**. The chatbot allows users to input a message through a web interface and receive intelligent, AI-generated responses in real time.
+
+---
+
+## 📌 What I Built
+
+Over 3 days, I developed and deployed:
+
+- A **Flask-based backend** that connects to OpenAI's GPT API
+- A **JavaScript + HTML frontend** to interact with users
+- A full stack integration using **fetch() API** to send/receive messages
+- A **live backend deployment on Render**
+- A **project screenshot PDF** showcasing working UI, backend logs, and deployment status
 
 ---
 
 ## 🔧 Tech Stack
 
-- **Frontend:** HTML, JavaScript, Fetch API
-- **Backend:** Python, Flask
-- **AI Engine:** OpenAI GPT (via API)
+- **Frontend:** HTML, JavaScript, Fetch API  
+- **Backend:** Python, Flask  
+- **AI Engine:** OpenAI GPT (via API)  
+- **Deployment:** Render (Free Tier)  
+- **Version Control:** GitHub
 
 ---
 
 ## 🛠 How to Run Locally
 
-### 1. Set your OpenAI API key
-Edit `app.py` and replace `"YOUR_OPENAI_API_KEY"` with your actual key.
-
-Or securely load it from `.env` (optional later step).
-
-### 2. Run the Flask Backend
+### 1. Clone the repository
 ```bash
-cd chatbot_app/backend
+git clone https://github.com/Srikasula/my-portfolio.git
+cd my-portfolio
+openai.api_key = os.getenv("OPENAI_API_KEY")
+cd backend
+pip install -r ../requirements.txt
 python app.py
-# 💬 My Portfolio Projects
 
-## 🤖 AI-Powered Chatbot (Full Stack)
+Project Screenshots
 
-Built with Python Flask, OpenAI GPT API, and HTML/JS.
+This includes:
 
-👉 View the project folder: [chatbot_app](./chatbot_app)
+Chat UI with real input
 
-👉 View screenshots: [Chatbot Screenshots (PDF)](./chatbot_app/screenshots/Srikanth_AI_Chatbot_Screenshots_FINAL.pdf)
+Flask logs and deployment status
 
----
+Postman API test
+
+GitHub folder structure
+
+Render dashboard
+Features
+Real-time AI replies using OpenAI's GPT engine
+
+Simple user interface built in HTML & JS
+
+Backend in Python Flask
+
+API-based architecture
+
+Fully deployed backend on Render
+
+Screenshot-based proof of working chatbot
+
+What I Learned
+REST API development using Flask
+
+Frontend to backend JSON communication
+
+Integration of OpenAI GPT with secure API handling
+
+Deployment of Python backend using Render
+
+Using Postman for API testing
+
