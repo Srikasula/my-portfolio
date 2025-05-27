@@ -1,4 +1,4 @@
-# 🤖 AI-Powered Full Stack Chatbot
+# 🤖  Full Stack AI Chatbot
 
 This is a full stack AI chatbot project built using **Python Flask**, **HTML/JavaScript**, and **OpenAI's GPT API**. The chatbot allows users to input a message through a web interface and receive intelligent, AI-generated responses in real time.
 
